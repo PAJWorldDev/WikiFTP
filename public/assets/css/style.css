@@ -1,0 +1,12 @@
+#contextMenu {
+    position: absolute;
+    display:none;
+}
+
+#contextMenu li:hover {
+    cursor:pointer;
+}
+
+.badge-success{
+  background-color:#38B44A;
+}

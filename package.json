@@ -1,0 +1,17 @@
+{
+    "name": "WikiFTP",
+    "description": "FTP like app for multiple folder access on a single machine",
+    "author": "PAJ World",
+    "dependencies": {
+        "express"   : ">= 3.0.0",
+        "mongodb"   : "*",
+        "ejs"       : "*",
+        "mime"      : "*",
+        "fstream"   : "*",
+        "tar"       : "*",
+        "zlib"      : "*",
+        "unzip"     : "*",
+        "mv"        : ">= 1.0.0",
+        "url"       : "*"
+    }
+}

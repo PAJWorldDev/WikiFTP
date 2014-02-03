@@ -1,0 +1,58 @@
+<table class="table" data-userid="<%= _id %>" id="table" <%if(username=='admin'){%>data-role="admin"<%} else {%>data-role="user"<%}%> >
+    <tr>
+        <td>Username</td>
+        <td><input type="text" class="form-control" placeholder="Username" data-originalusername="<%= username %>" <%if(username=='admin'){%> readonly <%}%> value="<%= username %>" id="username" /></td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td>
+            <div class="input-group">
+                <input type="password" class="form-control" placeholder="Password" value="<%= password %>" id="password" />
+                <span class="input-group-addon">
+                    <input type="checkbox" id="showHidePassword" />
+                    <label for="showHidePassword">Show password</label>
+                </span>
+            </div>
+        </td>
+    </tr>
+    
+    <% try { %>
+        <% for(var i=0; i<aliases.length; i++) { %>
+            <tr class="alias">
+                <td>Alias:</td>
+                <td>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="name" value="<%= aliases[i].name %>" id="name" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="path" value="<%= aliases[i].path %>" id="path" />
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-danger removeAlias"><i class="fa fa-times"></i> Remove</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        <% } %>
+    <% } catch(e){} %>
+    
+    <% if(username!='admin') { %>
+    <tr id="addAliasRow">
+        <td></td>
+        <td>
+            <button class="btn btn-info btn-block" id="addAlias">Add Alias</button>
+        </td>
+    </tr>
+    <% } %>
+    
+    <tr>
+        <td></td>
+        <td>
+            <button class="btn btn-success" id="userSubmit">Update</button>
+            <% if(username!='admin') { %>
+                <button class="btn btn-danger" id="deleteUser">Delete this User</button>
+            <% } %>
+        </td>
+    </tr>
+</table>

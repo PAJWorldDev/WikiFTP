@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        <title>Wiki FTP</title>
+        <link rel="stylesheet" type="text/css" href="/dependencies/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/dependencies/font-awesome-4.0.3/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+        <style>
+            #table td {
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/admin">Wiki FTP</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right navbar-user">
+                        <li class="dropdown user-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i> <%=username%> <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/logout"><i class="fa fa-power-off"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 style="margin-top:0">
+                        Welcome Admin!
+                    </h1>
+                    <hr>
+                </div>
+                <div class="col-md-3">
+                    <div class="list-group">
+                        <a href="javascript:void(0)" class="list-group-item" id="addNewUser">
+                            <i class="fa fa-plus"></i>&ensp;
+                            Add new user
+                        </a>
+                    </div>
+                    <div class="list-group" id="userList">
+                        <% for(var i=0; i<data.length; i++) { %>
+                        <a href="javascript:void(0)" data-id="<%=data[i]._id%>" data-username="<%=data[i].username%>" class="list-group-item editUser">
+                            <% if(data[i].username=='admin') { %>
+                                <i class="fa fa-star"></i>&ensp;
+                            <% } else {%>
+                                <i class="fa fa-user"></i>&ensp;
+                            <% } %>
+                            <%= data[i].username %>
+                        </a>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">User information</div>
+                        <div class="panel-body">
+                            <div id="notifications"></div>
+                            <div id="template">
+                                Please choose an existing user to edit or try adding a new user<br>
+                                <img src="/assets/images/arrow.png" width="100px" style="margin-left:-40px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/dependencies/jquery.js"></script>
+        <script src="/dependencies/bootstrap/js/bootstrap.js"></script>
+        <script src="/dependencies/ejs_1.0_developer/ejs_production.js"></script>
+        <script src="/dependencies/bootbox.js"></script>
+        <script src="/assets/js/admin.js"></script>
+    </body>
+</html>

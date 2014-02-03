@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+        <title>Wiki FTP</title>
+        <link rel="stylesheet" type="text/css" href="/dependencies/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/dependencies/font-awesome-4.0.3/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="/dependencies/plupload-2.1.1/js/jquery.plupload.queue/css/jquery.plupload.queue.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home">Wiki FTP</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right navbar-user">
+                        <li class="dropdown user-dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-user"></i> <%=username%> <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!--
+                                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                                -->
+                                <li><a href="/settings"><i class="fa fa-gear"></i> Settings</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/logout"><i class="fa fa-power-off"></i> Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 style="margin-top:0">
+                        Welcome!
+                        <a class="btn btn-primary pull-right" id="openModal">Upload here&ensp;<i class="fa fa-upload"></i></a>
+                    </h1>
+                    <div id="alerts"></div>
+                    <hr style="border:0;border-bottom:1px solid #ccc">
+                    <div class="list-group" style="font-size:1em" id="content"></div>
+                    
+                    <!-- context menu -->
+                    <div id="contextMenu" class="dropdown clearfix">
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
+                            <li>
+                                <a tabindex="-1" data-action='download'>
+                                    <i class="fa fa-download"></i>
+                                    &nbsp; Download
+                                </a>
+                            </li>
+                            <li>
+                                <a tabindex="-1" data-action='share'>
+                                    <i class="fa fa-share"></i>
+                                    &nbsp; Share
+                                </a>
+                            </li>
+                            <li>
+                                <a tabindex="-1" data-action='unzip'>
+                                    <i class="glyphicon glyphicon-compressed"></i>
+                                    &nbsp; Unzip
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" data-action='delete'>
+                                    <i class="fa fa-times"></i>
+                                    &nbsp; Delete
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- context menu end -->
+                </div>
+            </div>
+            
+            <!-- modal -->
+            <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                <i class="fa fa-cloud"></i>&ensp;File Uploader
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+                            <br />
+                            <div id="uploader">
+                                <a class="btn btn-sm btn-primary" id="pickfiles" href="javascript:;">Select files</a>
+                                <a class="btn btn-sm btn-primary" id="uploadfiles" href="javascript:;">Start upload</a>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <script src="/dependencies/jquery.js"></script>
+        <script src="/dependencies/bootstrap/js/bootstrap.js"></script>
+        <script src="/dependencies/bootbox.js"></script>
+        <script src="/dependencies/plupload-2.1.1/js/plupload.full.min.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>
